@@ -1,9 +1,11 @@
 let main = document.querySelector("main");
+const api = new Api("ekaterina-davydenko");
+
 const updCards = function (data) {
   main.innerHTML = "";
   data.forEach(function (cat) {
     if (cat.id) {
-      let card = `<div class="${
+      let card = `<div id="${cat.id}" class="${
         cat.favourite ? "card like" : "card"
       }" style="background-image: url(${cat.img_link || "images/cat.jpg"})">
     <span>${cat.name}</span>
@@ -16,16 +18,26 @@ const updCards = function (data) {
     const width = cards[i].offsetWidth;
     cards[i].style.height = width * 0.6 + "px";
   }
+  setInfo()
 };
-
+let form = document.forms[0];
 let addBtn = document.querySelector("#add");
 let popupForm = document.querySelector("#popup-form");
 let closePopupForm = popupForm.querySelector(".popup-close");
+
+
+
 addBtn.addEventListener("click", (e) => {
   e.preventDefault();
   if (!popupForm.classList.contains("active")) {
     popupForm.classList.add("active");
     popupForm.parentElement.classList.add("active");
+    let numOfCats = JSON.parse(localStorage.getItem("cats"))
+    let ids = []
+    numOfCats.forEach((e) => ids.push(e.id))
+   curId = Math.max(...ids) + 1
+  form.id.value = curId
+form.id.disabled = true
   }
 });
 closePopupForm.addEventListener("click", () => {
@@ -33,8 +45,8 @@ closePopupForm.addEventListener("click", () => {
   popupForm.parentElement.classList.remove("active");
 });
 
-const api = new Api("ekaterina-davydenko");
-let form = document.forms[0];
+
+
 form.img_link.addEventListener("change", (e) => {
   form.firstElementChild.style.backgroundImage = `url(${e.target.value})`;
 });
@@ -107,3 +119,4 @@ const getCats = function (api, store) {
   }
 };
 getCats(api, catsData);
+

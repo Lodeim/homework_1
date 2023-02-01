@@ -14,8 +14,13 @@
   </head>
   <body>
     <header>
-      <a href="" class="logo"><i class="fa-solid fa-cat"></i> Meme-лые котики</a>
-      <a class="btn" href="" id="add"><i class="fa-regular fa-plus"></i></a>
+      <a href="" class="logo"
+        ><i class="fa-solid fa-cat"></i> Meme-лые котики</a
+      >
+      <div>
+        <a class="btn" href="" id="login"><i class="fa-regular fa-user"></i></a>
+        <a class="btn" href="" id="add"><i class="fa-regular fa-plus"></i></a>
+      </div>
     </header>
     <main></main>
     <footer>
@@ -51,6 +56,83 @@
         </form>
       </div>
     </div>
+    <div class="popup-wrapper">
+      <div class="popup" id="popup-info">
+        <div class="popup-close btn"><i class="fa-solid fa-xmark"></i></div>
+        <h2>О коте</h2>
+        <form class="info" action="">
+          <p id="p_id">ID</p>
+          <p id="p_age">Возраст</p>
+          <p id="p_rate">Рейтинг</p>
+          <div class="form-img"></div>
+          <input
+            type="number"
+            name="id"
+            min="1"
+            required
+            placeholder="id"
+            readonly
+          />
+          <input
+            type="number"
+            name="age"
+            placeholder="Возраст"
+            readonly
+            value=""
+          />
+          <input
+            type="text"
+            name="name"
+            required
+            placeholder="Имя"
+            readonly
+            value="пшшпшш"
+          />
+          <input
+            type="number"
+            name="rate"
+            placeholder="Рейтинг (0-10)"
+            min="0"
+            max="10"
+            readonly
+          />
+          <textarea
+            name="description"
+            placeholder="Описание"
+            readonly
+          ></textarea>
+          <label
+            >Любимчик
+            <input
+              type="checkbox"
+              name="favourite"
+              placeholder=""
+              readonly
+              disabled
+          /></label>
+          <input
+            type="text"
+            name="img_link"
+            placeholder="Ссылка на фото"
+            readonly
+          />
+          <button type="button" class="edit">Редактировать</button>
+          <button type="button" class="delete">Удалить</button>
+        </form>
+      </div>
+    </div>
+    <div class="popup-wrapper">
+      <div class="popup" id="popup-login">
+        <div class="popup-close btn"><i class="fa-solid fa-xmark"></i></div>
+        <form action="">
+          <input type="text" name="name" required placeholder="Имя" />
+          <input type="text" name="password" required placeholder="Пароль" />
+          <button type="submit">Зарегистрироваться</button>
+        </form>
+      </div>
+    </div>
+    <script src="scripts/login.js"></script>
+    <script src="scripts/setInfoForm.js"></script>
     <script src="scripts/index.js"></script>
   </body>
 </html>
